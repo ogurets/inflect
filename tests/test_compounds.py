@@ -88,3 +88,13 @@ def test_unit_open_compound_nouns_classical():
     for singular, plural in test_cases.items():
         assert p.plural(singular) == plural
     p.classical(all=False)
+
+
+def test_snake_case():
+    assert p.singular_noun("item status") is False
+    assert p.singular_noun("item/status") is False
+    assert p.singular_noun("item.status") is False
+    assert p.singular_noun("item-status") is False
+    assert p.singular_noun("item_status") is False
+
+    assert p.singular_noun("item_statuses") == "item_status"

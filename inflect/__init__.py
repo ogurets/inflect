@@ -2016,7 +2016,7 @@ class Words(str):
 
     def __init__(self, orig) -> None:
         self.lowered = self.lower()
-        self.split_ = self.split()
+        self.split_ = re.split('[ -_/.]', self)
         self.first = self.split_[0]
         self.last = self.split_[-1]
 
